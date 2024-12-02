@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# Simple Cloud Native Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+這是一個基於 React 的前端專案，用於展示簡單的雲原生應用。
 
-## Available Scripts
+## 專案結構
 
-In the project directory, you can run:
+simple-frontend/
+├── public/ # 靜態資源目錄
+├── src/ # 源代碼目錄
+│ ├── components/ # React 組件
+│ │ ├── Common/ # 通用組件
+│ │ ├── User/ # 用戶相關組件
+│ │ └── Order/ # 訂單相關組件
+│ ├── services/ # API 服務
+│ ├── styles/ # CSS 樣式
+│ ├── App.jsx # 主應用組件
+│ └── index.jsx # 入口文件
+└── README.md
 
-### `npm start`
+## 功能模組
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 用戶管理
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 用戶列表顯示
+- 用戶新增/編輯/刪除
+- 用戶詳情查看
+- 分頁功能
 
-### `npm test`
+### 訂單管理
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 訂單列表顯示
+- 訂單新增/編輯/刪除
+- 訂單詳情查看
+- 分頁功能
 
-### `npm run build`
+## 技術棧
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React 18
+- React Router v6
+- Axios
+- CSS Modules
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## API 接口
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+所有 API 請求通過 Gateway (8080) 轉發到對應的微服務：
 
-### `npm run eject`
+- 用戶服務 (8081)
+- 訂單服務 (8082)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 用戶接口
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- GET /api/users - 獲取用戶列表
+- GET /api/users/{id} - 獲取用戶詳情
+- POST /api/users - 創建用戶
+- PUT /api/users/{id} - 更新用戶
+- DELETE /api/users/{id} - 刪除用戶
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 訂單接口
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- GET /api/orders - 獲取訂單列表
+- GET /api/orders/{id} - 獲取訂單詳情
+- POST /api/orders - 創建訂單
+- PUT /api/orders/{id} - 更新訂單
+- DELETE /api/orders/{id} - 刪除訂單
 
-## Learn More
+## 開始使用
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. 安裝依賴
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+bash
+npm install
 
-### Code Splitting
+2. 運行開發服務器
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+bash
+npm start
 
-### Analyzing the Bundle Size
+3. 構建生產版本
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 開發指南
 
-### Making a Progressive Web App
+### 添加新組件
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. 在 `src/components` 中創建新的組件目錄
+2. 創建組件 JSX 文件
+3. 在 `App.jsx` 中添加路由
 
-### Advanced Configuration
+### 添加新服務
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. 在 `src/services` 中創建新的服務文件
+2. 配置 API 端點
+3. 在組件中導入並使用
 
-### Deployment
+## 注意事項
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 確保後端服務已啟動
+- 檢查 API Gateway 配置
+- 注意跨域設置
